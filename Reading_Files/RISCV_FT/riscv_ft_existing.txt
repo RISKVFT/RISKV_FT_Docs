@@ -40,7 +40,7 @@ NB: Fault tolerance can be achieved in SW or HW
 
 -"Reliable low-power digital signal processing via reduced precision redundancy"
 ---TECHNICS
-	
+	ANT technique: reduced precision redundancy (RPR). RPR employs a reduced precision replica of a DSP system [referred to as main DSP (MDSP)] to detect and correct the errors occurring at the output of the MDSP system.
 ---BENCHMARK ALGORITHMS
 
 -"Towards a fault tolerant RISC-V softcore"
@@ -48,6 +48,12 @@ NB: Fault tolerance can be achieved in SW or HW
 	Hsiao SEC/DED code for cache memory;
 ---BENCHMARK ALGORITHMS
 	saboteurs;
+
+-Applying Compiler-Automated Software Fault Tolerance to Multiple Processor Platforms
+	---TECHNICS
+	It provides automated compiler modification of software programs to insert dual- or triple-modular redundancy.
+	It adds fault mitigation to user software through duplication or triplication of instructions and data.
+	---BENCHMARK ALGORITHMS
 
 
 
