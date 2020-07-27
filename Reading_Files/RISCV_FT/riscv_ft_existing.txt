@@ -59,8 +59,8 @@ NB: Fault tolerance can be achieved in SW or HW
 
 -"A RISC-V Fault-Tolerant Microcontroller Core Architecture Based on a Hardware Thread Full-Weak protection and a Thread-Controlled Watch-Dog Timer"
 ---TECHNICS
-	TMR to PC, Control & Status registers, Processing Pipeline, Register File (TMR-based full-weak Hardware Thread (HART) protection);
-	Thread Controlled Watch-Dog Timer (TC-WDT) applied to other HART (Hardware Threads);
+	HART0 fully protected with TMR-based (PC, Control & Status registers, Processing Pipeline, Register File).
+	HART1 and HART2 are weakly protected: register file is not protected as in HART0, but a weak protection is guaranteed by TC-WDT.
 ---BENCHMARK ALGORITHMS
 	TCL scripts which force random bit flip in each flip-flop inside the core;
 
