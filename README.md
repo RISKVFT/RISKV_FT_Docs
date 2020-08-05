@@ -1,14 +1,15 @@
-# Fault Tolerant RI5CY core
+c-# Fault Tolerant RI5CY core
 Ensamble of documentation on RISCV, PULPissimo and Fault Tolerant architecture.
 ## Pulp core cv32e40p
 Pulp core cv32e40p could be find at [cv32e40p](https://github.com/openhwgroup/cv32e40p) while core documentation is available at [gitDocumentation](https://github.com/openhwgroup/core-v-docs/tree/master/cores/cv32e40p), in this repository there are all document that rendered using Sphinx generate html site at [htmlDocumentation](https://core-v-docs-verif-strat.readthedocs.io/projects/cv32e40p_um/en/latest/intro.html) 
-### Verilog core file description
+### System Verilog core file short description
 This core file can be found at [cv32e40p/rtl](https://github.com/openhwgroup/cv32e40p/tree/master/rtl) and describe core architecture in verilog:
 
  * **cv32e40p_alu_div.sv** : 
  * **cv32e40p_alu.sv** : [Doc](https://core-v-docs-verif-strat.readthedocs.io/projects/cv32e40p_um/en/latest/apu.html) Implement the Auxiliary Processing Unit (APU) used by apu_tracer.<br>
  * **cv32e40p_apu_disp.sv** : 
- * **cv32e40p_compressed_decoder.sv** : 
+ * **cv32e40p_compressed_decoder.sv** : This decoder implement the *Standard Extension for Compressed Istruction* called "C" or "RVC" which reduces (about -30%) static and dynamic code size by adding short 16-bit instruction encodings for common operations. This technique is described in Chapter 16 of [risc-spec](https://riscv.org/specifications/isa-spec-pdf/). It is also to remember that C extension is not designed to be a stand-alone ISA, and is meant to be used alongside a base ISA.<br> In order to understand the conversion you could see at page 107 and 130 of  [risc-spec](https://riscv.org/specifications/isa-spec-pdf/) for the compressed operation *c.addi4spn* defined at line 61 of cv32e40p_compressed_decoder.sv file.
+Remember that RV32I reserves a large encoding space for HINT instructions, which are usually used to communicate performance hints to the microarchitecture.
  * **cv32e40p_controller.sv** : 
  * **cv32e40p_core.sv** : [Doc](https://core-v-docs-verif-strat.readthedocs.io/projects/cv32e40p_um/en/latest/integration.html) Contain main module <span style="color:green">cv32e40p_core</span>. This module is configurable with some parameter.<br>
  * **cv32e40p_cs_registers.sv** : [Doc](https://core-v-docs-verif-strat.readthedocs.io/projects/cv32e40p_um/en/latest/control_status_registers.html) CV32E40P does not implement all control and status registers specified in the RISC-V privileged specifications, but is limited to the registers that were needed for the PULP system. The reason for this is that we wanted to keep the footprint of the core as low as possible and avoid any overhead that we do not explicitly need.
@@ -44,6 +45,13 @@ These file instead can be found in [cv32e40p/bhv](https://github.com/openhwgroup
  * **cv32e40p_tracer.sv** : 
  * **cv32e40p_wrapper.sv** : 
  * **cv32e40p_tracer_pkg.sv** : 
+
+These instead are include file in *rtl/include* directory:
+ * **cv32e40p_pkg.sv** : Here there are many definition:  
+       * **OPCODES** : The first opcode are RISCV specified in [isa-spec](https://riscv.org/specifications/isa-spec-pdf/) at page 129 instea the latter opcode are pulp specific.
+       * **ALU Operation** :
+       * **CS Register** : 
+
 
 ### Block diagram generation
 * [Block diagram maker](https://www.smartdraw.com/block-diagram/block-diagram-maker.htm)
