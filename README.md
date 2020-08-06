@@ -2,6 +2,8 @@ c-# Fault Tolerant RI5CY core
 Ensamble of documentation on RISCV, PULPissimo and Fault Tolerant architecture.
 ## Pulp core cv32e40p
 Pulp core cv32e40p could be find at [cv32e40p](https://github.com/openhwgroup/cv32e40p) while core documentation is available at [gitDocumentation](https://github.com/openhwgroup/core-v-docs/tree/master/cores/cv32e40p), in this repository there are all document that rendered using Sphinx generate html site at [htmlDocumentation](https://core-v-docs-verif-strat.readthedocs.io/projects/cv32e40p_um/en/latest/intro.html) 
+### General useful property 
+* **Endianness** : all core is Little-Endian so vectors are initialized as \[7:0\] and LSB is in smalles address. 
 ### System Verilog core file
 This core file can be found at [cv32e40p/rtl](https://github.com/openhwgroup/cv32e40p/tree/master/rtl) and describe core architecture in verilog:
 
