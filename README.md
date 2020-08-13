@@ -30,11 +30,9 @@ In this SV file is described the complete combinational decoder that have this b
  * **cv32e40p_hwloop_regs.sv** : [Doc](https://core-v-docs-verif-strat.readthedocs.io/projects/cv32e40p_um/en/latest/pulp_hw_loop.html) <br>
  * **cv32e40p_id_stage.sv** : <br>
  * **cv32e40p_if_stage.sv** :This file contain the description of **IF stage** and could be divided in 3 blocks: 
- 
     * **PC generation** : This block handle the PC exception such as IRQ, trap, exc selecting correct exception, in addition manage jumps, boot, mepc, uepc and branch selecting a new address for each clock cycle called *fence_addr_n* (32 bit). This address enter in the **Prefetch_Buffer** block that generate *fetch_addr* used as new PC (*pc_if_o*). The *pc_if_o* enter in a register and exit as *pc_id_o* that will be used to generate the new  *fence_addr_n* if the next PC is  *pc_id_o + 4*
     * **FSM for branch, fetch and valid** : This FSM have an IDLE state and a WAIT state and is used to generate *branch_req*, *fetch _ready* and *valid* signals. The FSM inputs are *pc_set_i*, *req_i*, *fetch_valid*, *if_valid* and *rst_n*.
     * **Pipeline Registers** :  This stage create pipeline register for each signal and create the logic for *hwlp_dec_int_id_o* and *is_hwlp_id_o* signals.
-<br>
  * **cv32e40p_int_controller.sv** : <br>
  * **cv32e40p_load_store_unit.sv** : [Doc](https://core-v-docs-verif-strat.readthedocs.io/projects/cv32e40p_um/en/latest/load_store_unit.html) The Load-Store Unit (LSU) of the core takes care of accessing the data memory. Load and stores on words (32 bit), half words (16 bit) and bytes (8 bit) are supported. <br>
  * **cv32e40p_mult.sv** : <br>
