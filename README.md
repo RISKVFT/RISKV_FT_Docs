@@ -1,11 +1,13 @@
-c-# Fault Tolerant RI5CY core
-Ensamble of documentation on RISCV, PULPissimo and Fault Tolerant architecture.
+c-# Fault Tolerant RI5CY core<br>
+Ensemble of documentation on RISCV, PULPissimo and Fault Tolerant architecture.
 ## Pulp core cv32e40p
-Pulp core cv32e40p could be find at [cv32e40p](https://github.com/openhwgroup/cv32e40p) while core documentation is available at [gitDocumentation](https://github.com/openhwgroup/core-v-docs/tree/master/cores/cv32e40p), in this repository there are all document that rendered using Sphinx generate html site at [htmlDocumentation](https://core-v-docs-verif-strat.readthedocs.io/projects/cv32e40p_um/en/latest/intro.html) 
+Pulp core cv32e40p could be find at [cv32e40p](https://github.com/openhwgroup/cv32e40p) while core documentation is available in repository [gitDocumentation](https://github.com/openhwgroup/core-v-docs/tree/master/cores/cv32e40p). Here there are all documents that are rendered to html using Sphinx and can be read at [htmlDocumentation](https://core-v-docs-verif-strat.readthedocs.io/projects/cv32e40p_um/en/latest/intro.html) 
 ### General useful property 
 * **Endianness** : all core is Little-Endian so vectors are initialized as \[7:0\] and LSB is in smalles address. 
 ### System Verilog core file
 This core file can be found at [cv32e40p/rtl](https://github.com/openhwgroup/cv32e40p/tree/master/rtl) and describe core architecture in verilog:
+
+#### *cv32e40p/rtl*
 
  * **cv32e40p_alu_div.sv** :  <br>
  * **cv32e40p_alu.sv** : [Doc](https://core-v-docs-verif-strat.readthedocs.io/projects/cv32e40p_um/en/latest/apu.html) Implement the Auxiliary Processing Unit (APU) used by apu_tracer.<br>
@@ -42,6 +44,14 @@ The register file has **three read ports and two write ports**, Register file re
  * **cv32e40p_register_file_test_wrap.sv** : <br>
  * **cv32e40p_sleep_unit.sv** : [Doc](https://core-v-docs-verif-strat.readthedocs.io/projects/cv32e40p_um/en/latest/sleep.html) The Sleep Unit contains and controls the instantiated clock gate, that gates *clk_i* and produces a gated clock for use by the other modules inside CV32E40P. The Sleep Unit is the only place in which *clk_i* itself is used; all other modules use the gated version of *clk_i*.<br>
 
+#### *cv32e40p/rtl/include*
+These instead are include file in *rtl/include* directory:
+ * **cv32e40p_pkg.sv** : Here there are many definition:
+       * **OPCODES** : The first opcode are RISCV specified in [isa-spec](https://riscv.org/specifications/isa-spec-pdf/) at page 129 instea the latter opcode are pulp specific.
+       * **ALU Operation** :
+       * **CS Register** : <br>
+       
+#### *cv32e40p/bhv*
 
 These file instead can be found in [cv32e40p/bhv](https://github.com/openhwgroup/cv32e40p/tree/master/bhv) and are module, these cells are usually specific to the selected target technology and thus not provided as part of the RTL design:  
 
@@ -50,14 +60,10 @@ These file instead can be found in [cv32e40p/bhv](https://github.com/openhwgroup
  * **cv32e40p_sim_clock_gate.sv** : [Doc](https://core-v-docs-verif-strat.readthedocs.io/projects/cv32e40p_um/en/latest/getting_started.html#getting-started) A simulation-only version of the clock gating. Inside there is a module called <span style="color:green">cv32e40p_clock_gate</span> that perform clock gating. Clock gating is used both in *cv32e40p_sleep_unit.sv* and *cv32e40p_register_file_latch.sv*<br>
  * **cv32e40p_tracer.sv** : <br>
  * **cv32e40p_wrapper.sv** : <br>
+ 
+ #### *cv32e40p/bhv/include*
  * **cv32e40p_tracer_pkg.sv** : <br>
-
-These instead are include file in *rtl/include* directory:
- * **cv32e40p_pkg.sv** : Here there are many definition:
-       * **OPCODES** : The first opcode are RISCV specified in [isa-spec](https://riscv.org/specifications/isa-spec-pdf/) at page 129 instea the latter opcode are pulp specific.
-       * **ALU Operation** :
-       * **CS Register** : <br>
-
+ 
 
 ### Block diagram generation
 * [Block diagram maker](https://www.smartdraw.com/block-diagram/block-diagram-maker.htm)
