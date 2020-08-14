@@ -9,9 +9,9 @@ This core file can be found at [cv32e40p/rtl](https://github.com/openhwgroup/cv3
 
 #### *cv32e40p/rtl*
 
- * **cv32e40p_alu_div.sv** :  <br>
- * **cv32e40p_alu.sv** : [Doc](https://core-v-docs-verif-strat.readthedocs.io/projects/cv32e40p_um/en/latest/apu.html) Implement the Auxiliary Processing Unit (APU) used by apu_tracer.<br>
- * **cv32e40p_apu_disp.sv** : <br>
+ * **cv32e40p_alu.sv** : Arithmetic logic unit of the pipelined processor. Supports FP-comparisons, classifications if FPU is defined. It is made of: partitioned adder, shift, comparison, shuffle, bit count operations, bit manipulations, bit reverse, division/reminder and the final result mux. <br>
+ * **cv32e40p_alu_div.sv** : this is a simple serial divider for signed integers (int32). <br>
+ * **cv32e40p_apu_disp.sv** : [Doc](https://core-v-docs-verif-strat.readthedocs.io/projects/cv32e40p_um/en/latest/apu.html) Implement the Auxiliary Processing Unit (APU) used by apu_tracer. <br>
  * **cv32e40p_compressed_decoder.sv** : This decoder implement the *Standard Extension for Compressed Istruction* called "C" or "RVC" which reduces (about -30%) static and dynamic code size by adding short 16-bit instruction encodings for common operations. <br>This technique is described in Chapter 16 of [risc-spec](https://riscv.org/specifications/isa-spec-pdf/). It is also to remember that C extension is not designed to be a stand-alone ISA, and is meant to be used alongside a base ISA.<br> In order to understand the conversion you could see at page 107 and 130 of  [risc-spec](https://riscv.org/specifications/isa-spec-pdf/) for the compressed operation *c.addi4spn* defined at line 61 of cv32e40p_compressed_decoder.sv file.
 Remember that RV32I reserves a large encoding space for HINT instructions, which are usually used to communicate performance hints to the microarchitecture.
 In this SV file is described the complete combinational decoder that have this behavior:
@@ -23,7 +23,12 @@ In this SV file is described the complete combinational decoder that have this b
  * **cv32e40p_core.sv** : [Doc](https://core-v-docs-verif-strat.readthedocs.io/projects/cv32e40p_um/en/latest/integration.html) Contain main module <span style="color:green">cv32e40p_core</span>. This module is configurable with some parameter. It is actually the instantiation of all the pipeline modules: clock managment, IF stage, ID stage, EX stage, Load-Store unit, Control and Status registers and PMP. <br>
  * **cv32e40p_cs_registers.sv** : [Doc](https://core-v-docs-verif-strat.readthedocs.io/projects/cv32e40p_um/en/latest/control_status_registers.html) CV32E40P does not implement all control and status registers specified in the RISC-V privileged specifications, but is limited to the registers that were needed for the PULP system. The reason for this is that we wanted to keep the footprint of the core as low as possible and avoid any overhead that we do not explicitly need.<br>
  * **cv32e40p_decoder.sv** : <br>
- * **cv32e40p_ex_stage.sv** : <br>
+ * **cv32e40p_ex_stage.sv** : Execution stage: Hosts ALU and MAC unit <br>
+            ALU: computes additions/subtractions/comparisons <br>
+            MULT: computes normal multiplications <br>
+            APU_DISP: offloads instructions to the shared unit. <br>
+            FPU: <br>
+            Parameters SHARED_DSP_MULT, SHARED_INT_DIV allow to offload also dot-product, int-div, int-mult to the shared unit.<br>
  * **cv32e40p_fetch_fifo.sv** : <br>
  * **cv32e40p_ff_one.sv** : <br>
  * **cv32e40p_hwloop_controller.sv** :[Doc](https://core-v-docs-verif-strat.readthedocs.io/projects/cv32e40p_um/en/latest/pulp_hw_loop.html) To increase the efficiency of small loops, CV32E40P supports hardware loops optionally. They can be enabled by setting the **PULP_XPULP** parameter. <br>Hardware loops make *executing a piece of code multiple times possible*, without the overhead of branches or updating a counter. Hardware loops involve zero stall cycles for jumping to the first instruction of a loop.<br>
@@ -35,7 +40,7 @@ In this SV file is described the complete combinational decoder that have this b
     * **Pipeline Registers** :  This stage create pipeline register for each signal and create the logic for *hwlp_dec_int_id_o* and *is_hwlp_id_o* signals.
  * **cv32e40p_int_controller.sv** : <br>
  * **cv32e40p_load_store_unit.sv** : [Doc](https://core-v-docs-verif-strat.readthedocs.io/projects/cv32e40p_um/en/latest/load_store_unit.html) The Load-Store Unit (LSU) of the core takes care of accessing the data memory. Load and stores on words (32 bit), half words (16 bit) and bytes (8 bit) are supported. <br>
- * **cv32e40p_mult.sv** : <br>
+ * **cv32e40p_mult.sv** : Advanced MAC unit for PULP. Added parameter SHARED_DSP_MULT to offload dot-product instructions to the shared unit. It is made of: integer multiplier, dot multiplier and the final results mux.<br>
  * **cv32e40p_obi_interface.sv** : <br>
  * **cv32e40p_pmp.sv** : <br>
  * **cv32e40p_popcnt.sv** : <br>
