@@ -1,0 +1,43 @@
+   
+cv32e40p/rtl :
+cv32e40p_alu_div.sv 223
+cv32e40p_apu_disp.sv 247
+cv32e40p_core.sv 1177
+	cv32e40p_cs_registers 1526
+	cv32e40p_ex_stage 560
+		cv32e40p_alu 1152
+		cv32e40p_mult 365
+	cv32e40p_id_stage 1759
+		cv32e40p_controller 1170
+		cv32e40p_decoder 2881
+		cv32e40p_int_controller 111
+		cv32e40p_register_file_test_wrap 163
+	cv32e40p_if_stage 406
+		cv32e40p_compressed_decoder 334
+	cv32e40p_load_store_unit 595
+		cv32e40p_obi_interface 215
+	cv32e40p_pmp 808
+	cv32e40p_sleep_unit 278
+cv32e40p_fetch_fifo.sv 225
+cv32e40p_ff_one.sv 98
+cv32e40p_hwloop_controller.sv 98
+cv32e40p_hwloop_regs.sv 134
+cv32e40p_popcnt.sv 63
+cv32e40p_prefetch_buffer.sv 219
+	cv32e40p_fetch_fifo 225
+	cv32e40p_obi_interface 215
+	cv32e40p_prefetch_controller 272
+cv32e40p_register_file_ff.sv 183
+cv32e40p_register_file_latch.sv 227
+  
+
+ 
+cv32e40p/bhv :
+        33 cv32e40p_sim_clock_gate.sv
+        59 cv32e40p_core_log.sv
+        74 cv32e40p_apu_tracer.sv
+       160 cv32e40p_wrapper.sv
+      1103 cv32e40p_tracer.sv
+      1429 total
+
+
