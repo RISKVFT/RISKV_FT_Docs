@@ -20,7 +20,7 @@ In this SV file is described the complete combinational decoder that have this b
      * Finally is a compressed instruction have an invalid or non implemented *funct code (instr_i\[15:13\])*, the *illegal_instr_o* is asserted and the instruction is condisered invalid. 
      * **Fault Tolerant consideration:** since this block is only cmbinatory the easiest way is to use a TMR approach.<br>
  * **cv32e40p_controller.sv** : <br>
- * **cv32e40p_core.sv** : [Doc](https://core-v-docs-verif-strat.readthedocs.io/projects/cv32e40p_um/en/latest/integration.html) Contain main module <span style="color:green">cv32e40p_core</span>. This module is configurable with some parameter.<br>
+ * **cv32e40p_core.sv** : [Doc](https://core-v-docs-verif-strat.readthedocs.io/projects/cv32e40p_um/en/latest/integration.html) Contain main module <span style="color:green">cv32e40p_core</span>. This module is configurable with some parameter. It is actually the instantiation of all the pipeline modules: clock managment, IF stage, ID stage, EX stage, Load-Store unit, Control and Status registers and PMP. <br>
  * **cv32e40p_cs_registers.sv** : [Doc](https://core-v-docs-verif-strat.readthedocs.io/projects/cv32e40p_um/en/latest/control_status_registers.html) CV32E40P does not implement all control and status registers specified in the RISC-V privileged specifications, but is limited to the registers that were needed for the PULP system. The reason for this is that we wanted to keep the footprint of the core as low as possible and avoid any overhead that we do not explicitly need.<br>
  * **cv32e40p_decoder.sv** : <br>
  * **cv32e40p_ex_stage.sv** : <br>
