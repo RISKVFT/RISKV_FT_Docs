@@ -1,7 +1,8 @@
 c-# Fault Tolerant RI5CY core<br>
 Ensemble of documentation on RISCV, PULPissimo and Fault Tolerant architecture.
 ## Pulp core cv32e40p
-Pulp core cv32e40p could be find at [cv32e40p](https://github.com/openhwgroup/cv32e40p) while core documentation is available in repository [gitDocumentation](https://github.com/openhwgroup/core-v-docs/tree/master/cores/cv32e40p). Here there are all documents that are rendered to html using Sphinx and can be read at [htmlDocumentation](https://core-v-docs-verif-strat.readthedocs.io/projects/cv32e40p_um/en/latest/intro.html). You can finda the RI5CY user manual [ri5cy_user_manual](https://www.pulp-platform.org/docs/ri5cy_user_manual.pdf) and other useful informations [here](https://www.embecosm.com/2019/08/13/a-dive-into-ri5cy-core-internals/). 
+cv32e40p is an in-order 4-stage RISC-V RV32IMFCXpulp CPU based on RI5CY from PULP-Platform.
+Pulp core cv32e40p could be find at [cv32e40p](https://github.com/openhwgroup/cv32e40p) while core documentation is available in repository [gitDocumentation](https://github.com/openhwgroup/core-v-docs/tree/master/cores/cv32e40p). Here there are all documents that are rendered to html using Sphinx and can be read at [htmlDocumentation](https://core-v-docs-verif-strat.readthedocs.io/projects/cv32e40p_um/en/latest/intro.html). You can find the RI5CY user manual [ri5cy_user_manual](https://www.pulp-platform.org/docs/ri5cy_user_manual.pdf) and other useful informations [here](https://www.embecosm.com/2019/08/13/a-dive-into-ri5cy-core-internals/). 
 ### General useful property 
 * **Endianness** : all core is Little-Endian so vectors are initialized as \[7:0\] and LSB is in smalles address. 
 ### System Verilog core file
