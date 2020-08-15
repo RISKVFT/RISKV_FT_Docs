@@ -1,7 +1,7 @@
 c-# Fault Tolerant RI5CY core<br>
 Ensemble of documentation on RISCV, PULPissimo and Fault Tolerant architecture.
 ## Pulp core cv32e40p
-Pulp core cv32e40p could be find at [cv32e40p](https://github.com/openhwgroup/cv32e40p) while core documentation is available in repository [gitDocumentation](https://github.com/openhwgroup/core-v-docs/tree/master/cores/cv32e40p). Here there are all documents that are rendered to html using Sphinx and can be read at [htmlDocumentation](https://core-v-docs-verif-strat.readthedocs.io/projects/cv32e40p_um/en/latest/intro.html) 
+Pulp core cv32e40p could be find at [cv32e40p](https://github.com/openhwgroup/cv32e40p) while core documentation is available in repository [gitDocumentation](https://github.com/openhwgroup/core-v-docs/tree/master/cores/cv32e40p). Here there are all documents that are rendered to html using Sphinx and can be read at [htmlDocumentation](https://core-v-docs-verif-strat.readthedocs.io/projects/cv32e40p_um/en/latest/intro.html). You can finda the RI5CY user manual [ri5cy_user_manual](https://www.pulp-platform.org/docs/ri5cy_user_manual.pdf) and other useful informations [here](https://www.embecosm.com/2019/08/13/a-dive-into-ri5cy-core-internals/). 
 ### General useful property 
 * **Endianness** : all core is Little-Endian so vectors are initialized as \[7:0\] and LSB is in smalles address. 
 ### System Verilog core file
@@ -27,7 +27,7 @@ In this SV file is described the complete combinational decoder that have this b
             ALU: computes additions/subtractions/comparisons <br>
             MULT: computes normal multiplications <br>
             APU_DISP: offloads instructions to the shared unit. <br>
-            FPU: <br>
+            FPU: this unit is maintained in the PULP Platform FPNEW project [here](https://core-v-docs-verif-strat.readthedocs.io/projects/cv32e40p_um/en/latest/pulp_hw_loop.html). It is instatiated int the EX stage after compiling the package fpnew_pkg ahead of any files making references to types, parameters or functions defined there. <br>
             Parameters SHARED_DSP_MULT, SHARED_INT_DIV allow to offload also dot-product, int-div, int-mult to the shared unit.<br>
  * **cv32e40p_fetch_fifo.sv** : <br>
  * **cv32e40p_ff_one.sv** : <br>
