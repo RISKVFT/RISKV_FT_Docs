@@ -41,7 +41,7 @@ In this SV file is described the complete combinational decoder that have this b
     * **Pipeline Registers** :  This stage create pipeline register for each signal and create the logic for *hwlp_dec_int_id_o* and *is_hwlp_id_o* signals.
  * **cv32e40p_int_controller.sv** : <br>
  * **cv32e40p_load_store_unit.sv** : [Doc](https://core-v-docs-verif-strat.readthedocs.io/projects/cv32e40p_um/en/latest/load_store_unit.html) The Load-Store Unit (LSU) of the core takes care of accessing the data memory. Load and stores on words (32 bit), half words (16 bit) and bytes (8 bit) are supported. <br>
- * **cv32e40p_mult.sv** : Advanced MAC unit for PULP. Added parameter SHARED_DSP_MULT to offload dot-product instructions to the shared unit. It is made of: integer multiplier, dot multiplier and the final results mux.<br>
+ * **cv32e40p_mult.sv** : Advanced MAC unit for PULP. Added parameter SHARED_DSP_MULT to offload dot-product instructions to the shared unit. It is made of: integer multiplier, dot multiplier and the final results mux. See [this](https://greenwaves-technologies.com/manuals/BUILD/PULP-OS/html/group__Arith.html#gaaf662b4cd330d0f0129e804b79c09173) for detail of the mult instructions.<br>
  * **cv32e40p_obi_interface.sv** : <br>
  * **cv32e40p_pmp.sv** : <br>
  * **cv32e40p_popcnt.sv** : <br>
