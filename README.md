@@ -30,7 +30,7 @@ In this SV file is described the complete combinational decoder that have this b
             ALU: computes additions/subtractions/comparisons (see cv32e40p_alu.sv, cv32e40p_ff_one.sv, cv32e40p_popcnt.sv and cv32e40p_alu_div.sv); <br>
             MULT: computes different kind of multiplications (see cv32e40p_mult.sv); <br>
             APU_DISP: offloads instructions to the shared unit (see cv32e40p_apu_disp.sv); <br>
-            FPU: this unit is maintained in the PULP Platform FPNEW project [here](https://core-v-docs-verif-strat.readthedocs.io/projects/cv32e40p_um/en/latest/pulp_hw_loop.html). It is instatiated int the EX stage after compiling the package fpnew_pkg ahead of any files making references to types, parameters or functions defined there. <br>
+            FPU: [Doc](https://core-v-docs-verif-strat.readthedocs.io/projects/cv32e40p_um/en/latest/fpu.html) this unit is maintained in the PULP Platform FPNEW project [here](https://github.com/pulp-platform/fpnew). It is instatiated int the EX stage after compiling the package fpnew_pkg ahead of any files making references to types, parameters or functions defined there. It can be seen as a APU (additional processing unit) and so the APU dispatcher and the APU tracer will refer to this unit as the APU if defined.<br>
             Parameters SHARED_DSP_MULT, SHARED_INT_DIV allow to offload also dot-product, int-div, int-mult to the shared unit.<br>
  * **cv32e40p_fetch_fifo.sv** : <br>
  * **cv32e40p_ff_one.sv** : This module has two output: the index of the first '1' found in the input word and a signal stating if no '1' has been found.<br>
