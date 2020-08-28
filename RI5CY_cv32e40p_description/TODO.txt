@@ -28,7 +28,10 @@ E-	    cv32e40p_obi_interface 215
 E	    cv32e40p_prefetch_controller 272
 E   cv32e40p_register_file_ff.sv 183
 E    cv32e40p_register_file_latch.sv 227
-      
+
+E 5931
+L 3885
+M 5810      
 
      
     cv32e40p/bhv :
