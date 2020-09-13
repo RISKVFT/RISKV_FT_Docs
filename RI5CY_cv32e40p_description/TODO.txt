@@ -29,6 +29,8 @@ E-	    cv32e40p_prefetch_controller 272
 E   cv32e40p_register_file_ff.sv 183
 E    cv32e40p_register_file_latch.sv 227
 
+cv32e40p_fault_controller.sv
+
 E 5931
 L 3885
 M 5810      
