@@ -1,0 +1,169 @@
+
+###################################################
+################## STATE OF ART: ##################
+###################################################
+
+
+###################################################
+BOOK:Sorin_2009_Fault_Tolerant_Computer_Architecture
+TECHNIQUES:
+	BIST (Built In Self Test): the core uses spare cycles to perform BIST (e.g., testing the adder when the adder would otherwise be idle). If BISTidentifies a permanent fault, then the core recovers to a prior checkpoint. Then Constantinides et al. found out that BIST could be performed in SW to reduce HW complexity.
+###################################################
+
+https://riscv.org//wp-content/uploads/2019/06/16.30-Vigli-Blasi-Olivieri-riscv-zurich-2019_NEW.pdf
+
+TECHNIQUES:
+•Double Modular Redundancy error detection system
+•Protected checkpoint restoring on fault occurrence 
+•Dedicated hardware unit to support checkpoints (Checkpoint & Restore Unit)
+•Restoring and checkpoints managed by 4 pseudo–instructions–System controlled by dedicated CSR accesses
+•Additional features for the execution of dependent threads
+•Program Counter and CSR Unit fully protected with TMR technique 
+
+PRESENTED TECHNIQUES FOR SINGLE EVENT EFFECTS:
+Spatial redundancy 
+-Double Modular Redundancy (DMR) with error detection (USED)
+-Triple Modular Redundancy (TMR) with error correction (USED)
+-Fail-safe FSMs
+
+Temporal redundancy
+-Repetition with error detection:
+-Check-point and recovery (USED)
+-Task level or Cycle level
+-Hardware and/or software
+
+Miscellaneous
+Watch-dog timer techniques as a particular case
+-EDAC protection for memories
+
+
+LIST OF EXPLORED TECHNIQUES (STILL ONGOING WORK...)
+•full Triple-Modular-Redundancy on hart’s register file, CSRs, and on pipeline registers;
+•partial Triple-Modular-Redundancy on register subsets; (USED)
+•pipeline doubling with lockstep execution; 
+•delayed shadow thread with single pipeline;
+•delayed shadow thread with double pipeline;
+•checkpoint setting and status recovery; (USED)
+•watchdog timer and watchdog hart
+•memory ECC protection
+
+
+
+###################################################
+
+http://euler.ecs.umass.edu/ece655/pdf/Part18-ch7-case.pdf
+
+TECHNIQUES: 
+	Parity checking in datapath
+		»Parity prediction for simple arithmetic operations, e.g, add
+		»Multiply – redo with operands exchanged and one shifted
+			•Recomputing with shifted operands – also detects permanent fault
+		
+###################################################
+
+https://core.ac.uk/download/pdf/216049436.pdf
+
+TECHNIQUES:
+	Temporal techniques: 
+		RESO --> Recomputing with shifted operands
+		RERO --> Recomputing with rotating operands
+	Arithmetic codes:
+		AN codes (simple and effective only for addiction and subtraction)
+		residue codes (only for arithmetic operations)
+	Parity prediction circuits (protects execution unit)
+	Berger Codes
+
+
+###################################################
+
+http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.43.4001&rep=rep1&type=pdf
+
+TECHNIQUES:
+	"In this paper, we propose and evaluate a time redundancy fault-tolerant approach called Active-stream/Redundant-stream  Simultaneous  Multithreading, or AR-SMT.AR-SMT exploits several recent microarchitectural trendsto provide low-overhead, broad   coverage of transientfaults, and restricted coverage of some permanent faults."
+
+IMPORTANT SENTENCE:	
+	"Of course, simple  time  redundancy  can  only  detect  transient faults that are present during one or more of the redundant computations, but not all of them. Frequent and relatively short-lived transient faults are the primary focus of this paper, and therefore time redundancy is a viable approach.(However, detection of long-lived transient faults and some permanent faults are also addressed in our proposal.)"
+
+
+###################################################
+
+
+"An ALU Protection Methodology for SoftProcessors on SRAM-Based FPGAs"
+
+TECHNIQUES:
+	partial TMR configurations for the Arithmetic Logic Unit (ALU) ;
+
+
+###################################################
+
+"Reliable low-power digital signal processing via reduced precision redundancy"
+
+TECHNIQUES:
+	ANT technique: reduced precision redundancy (RPR). RPR employs a reduced precision replica of a DSP system [referred to as main DSP (MDSP)] to detect and correct the errors occurring at the output of the MDSP system.		
+
+
+###################################################
+
+"A Low-Cost Fault-Tolerant RISC-V Processor for Space Systems"
+
+TECHNIQUES:
+	Hamming code to protect the memory elements (PC in the fetch unit and registers in register file);
+	TMR (Triple modular redundancy) to protect the ALU and the control unit;
+BENCHMARK ALGORITHMS:
+	vector addition;
+	CCSDS-123;
+	Coremark benchmark;
+LIMITS:
+	not consider clock-tree and RAM issues so they considered only the effects in the processor while the effects in the FPGA configuration memory were not treated.
+	
+	
+###################################################
+	
+"A fault tolerant memory architecture for a RISC-V softcore"
+
+TECHNIQUES:
+	Hamming ECC at the memory elements (Hamming SECDED);
+	NMR (N-modular redundancy) at combinational elements;
+
+
+###################################################
+
+"A RISC-V Fault-Tolerant Microcontroller Core Architecture Based on a Hardware Thread Full-Weak protection and a Thread-Controlled Watch-Dog Timer"
+
+TECHNIQUES:
+	HART0 fully protected with TMR-based (PC, Control & Status registers, Processing Pipeline, Register File).
+	HART1 and HART2 are weakly protected: register file is not protected as in HART0, but a weak protection is guaranteed by TC-WDT.
+BENCHMARK ALGORITHMS:
+	TCL scripts which force random bit flip in each flip-flop inside the core;
+	
+###################################################
+
+
+###################################################
+#############  BENCHMARK ALGORITHMS:  #############
+###################################################
+
+TCL scripts which force random bit flip in each flip-flop inside the core;
+vector addition;
+CCSDS-123;
+Coremark benchmark;
+saboteurs;
+
+
+###################################################
+####################  IDEAS:  #####################
+###################################################
+
+ANT technique --> NRPR (N° Reduced Precision Redundancy): Replicate the module in heterogeneous way and compare the outputs; if the difference is greater than a certain threshold then there is an error.
+
+
+Question: How to handle the error? HW or OS?
+If from NMR there is an uncertainty still continue but repeate the execution in that section to verify (so spatial redundancy with temporal redundancy also called instruction retry)
+
+
+
+
+
+
+
+
