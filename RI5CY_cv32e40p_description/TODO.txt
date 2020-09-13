@@ -13,21 +13,21 @@ M	    cv32e40p_id_stage 1759
 M		    cv32e40p_controller 1170
 M		    cv32e40p_decoder 2881
 M		    cv32e40p_int_controller 111
+M    		    cv32e40p_hwloop_regs.sv 134
 M		    cv32e40p_register_file_test_wrap 163
+M  		    	cv32e40p_register_file_ff.sv 183
+M    		    	cv32e40p_register_file_latch.sv 227
 E-	    cv32e40p_if_stage 406
 E-		    cv32e40p_compressed_decoder 334
+E		    cv32e40p_hwloop_controller.sv 98
 E	    cv32e40p_load_store_unit 595
 E-		    cv32e40p_obi_interface 215
-	    cv32e40p_pmp 808
+E	    cv32e40p_pmp 808  (controllare se è da fare)
 E	    cv32e40p_sleep_unit 278
-M    cv32e40p_hwloop_controller.sv 98
-M    cv32e40p_hwloop_regs.sv 134
-E-  cv32e40p_prefetch_buffer.sv 219
+E-   cv32e40p_prefetch_buffer.sv 219
 E-	    cv32e40p_fetch_fifo 225
 E-	    cv32e40p_obi_interface 215
 E-	    cv32e40p_prefetch_controller 272
-E   cv32e40p_register_file_ff.sv 183
-E    cv32e40p_register_file_latch.sv 227
 
 Nel caso pre-sintesi
 	Ci sarà un parametro vector comune che dice quali blocchi debbano avere il FT o meno (0 -> disattivo), nel caso in cui la FT non venga
@@ -43,7 +43,7 @@ In entrambi i casi
 	bit n° 	       0              1 2 3 4 5 6 7     
 	        ( errore o meno)   ( tipo di errore )
 	
-cv32e40p_fault_controller.sv  (riceve tutti i segnali di fault e settare i registri che comunicano con l'OS) 
+E   cv32e40p_fault_controller.sv  (riceve tutti i segnali di fault e settare i registri che comunicano con l'OS) 
 
 E 5931
 L 3885
