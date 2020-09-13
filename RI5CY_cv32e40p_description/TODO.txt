@@ -20,8 +20,8 @@ E	    cv32e40p_load_store_unit 595
 E-		    cv32e40p_obi_interface 215
 	    cv32e40p_pmp 808
 E	    cv32e40p_sleep_unit 278
-    cv32e40p_hwloop_controller.sv 98
-    cv32e40p_hwloop_regs.sv 134
+M    cv32e40p_hwloop_controller.sv 98
+M    cv32e40p_hwloop_regs.sv 134
 E-  cv32e40p_prefetch_buffer.sv 219
 E-	    cv32e40p_fetch_fifo 225
 E-	    cv32e40p_obi_interface 215
@@ -29,7 +29,21 @@ E-	    cv32e40p_prefetch_controller 272
 E   cv32e40p_register_file_ff.sv 183
 E    cv32e40p_register_file_latch.sv 227
 
-cv32e40p_fault_controller.sv  (da instanziare in ogni blocco, riceve tutti i segnali di fault) 
+Nel caso pre-sintesi
+	Ci sarà un parametro vector comune che dice quali blocchi debbano avere il FT o meno (0 -> disattivo), nel caso in cui la FT non venga
+	fatta in un blocco, il relativo segnale fault_signal andrà a 0 oppure dovranno essere aggiunti degli if nelle instanze?
+Nel caso Clock Gating
+	Ci sarà un registro comune che dice quali blocchi debbano avere il FT o meno , da decidere se avere poi
+	un decoder che dal registro ricava quale blocco è attivo o meno.
+	In questo caso bisogna gestire il settaggio del registro di configurazione ( capire se fare un'istruzione apposita
+	o scrittura su RF).
+In entrambi i casi
+	Aggiungiamo un segnale da x bit (fault_signal_x_stage) nell'interfaccia di ogni blocco (modulo) di FT che sarà collegato al 
+	blocco cv32e40p_fault_controller.sv che gestisce tutti i segnali di fault. Il segnale da x bit avrà una sua codifica del tipo:
+	bit n° 	       0              1 2 3 4 5 6 7     
+	        ( errore o meno)   ( tipo di errore )
+	
+cv32e40p_fault_controller.sv  (riceve tutti i segnali di fault e settare i registri che comunicano con l'OS) 
 
 E 5931
 L 3885
