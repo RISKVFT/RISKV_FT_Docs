@@ -59,3 +59,7 @@ M 5810
           1429 total
 
 
+############### CORE-V-VERIF ###############
+1) Permettere di clonare due architetture: una di reiferimento (master) e una fault tolerant (FT_nome). E fare in modo che si possano comparare le due architetture così da 		poter validare il modello fault tolerant. Salvare Input e Output dell'architettura di riferimento e poi usarli con quella fault tolerant.
+2) Possibilità di continuare le simulazioni di un benchmark iniziato e concluso precedentemente, così da poter fare le simulazioni gradualmente senza intasare il Server con 		16600 simulazioni su un solo programma.
+
